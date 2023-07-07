@@ -21,14 +21,13 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
     }
   }
   
-  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    event.preventDefault();
-    
+ 
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let pilotStatus = validateInput(pilot);
     let coPilotStatus = validateInput(copilot);
     let fuelStatus = validateInput(fuelLevel);
     let cargoStatus = validateInput(cargoLevel);
-    
+  
     if (pilotStatus === "Empty" || coPilotStatus === "Empty" || fuelStatus === "Empty" || cargoStatus === "Empty") {
       alert("All fields are required!");
     } else if (pilotStatus === "Not a Number" || coPilotStatus === "Not a Number" || fuelStatus !== "Is a Number" || cargoStatus !== "Is a Number") {
@@ -71,4 +70,5 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
     myFetch,
     pickPlanet
   };
+  
   
