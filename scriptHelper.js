@@ -54,10 +54,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     }
   }
   
-  async function myFetch() {
+ 
     let response = await fetch('https://handlers.education.launchcode.org/static/planets.json');
     return response.json();
-  }
+
   
   function pickPlanet(planets) {
     return planets[Math.floor(Math.random() * planets.length)];
