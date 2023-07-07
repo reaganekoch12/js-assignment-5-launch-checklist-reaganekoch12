@@ -21,8 +21,9 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
     }
   }
   
- 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+  function formSubmission(event, document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    event.preventDefault();
+  
     let pilotStatus = validateInput(pilot);
     let coPilotStatus = validateInput(copilot);
     let fuelStatus = validateInput(fuelLevel);
@@ -54,12 +55,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     }
   }
   
- 
- 
- function myFetch() {
-    let response = await ('https://handlers.education.launchcode.org/static/planets.json');
-    return response.data;
- }
+  async function myFetch() {
+    let response = await fetch('https://handlers.education.launchcode.org/static/planets.json');
+    return response.json();
+  }
+  
   function pickPlanet(planets) {
     return planets[Math.floor(Math.random() * planets.length)];
   }
