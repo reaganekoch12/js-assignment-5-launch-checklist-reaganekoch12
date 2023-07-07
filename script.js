@@ -16,8 +16,18 @@ window.addEventListener("load", function() {
      listedPlanets.star,
      listedPlanets.distance,
      listedPlanets.moons,
-     listedPlanets.image
+     listedPlanets.imageUrl
 
    })
-   
+   form.addEventListener("submit", function (event) {
+    formSubmission(
+      event,
+      document,
+      document.getElementById("faultyItems"),
+      document.querySelector("input[name=pilotName]").value,
+      document.querySelector("input[name=copilotName]").value,
+      document.querySelector("input[name=fuelLevel]").value,
+      document.querySelector("input[name=cargoMass]").value
+    );
+  });
 });
