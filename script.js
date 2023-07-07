@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener("load", function(event) {
     let listedPlanets;
   
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
@@ -19,7 +19,7 @@ window.addEventListener("load", function() {
         randomPlanet.star,
         randomPlanet.distance,
         randomPlanet.moons,
-        randomPlanet.imageURL
+        randomPlanet.imageUrl
       );
     });
   
@@ -36,3 +36,4 @@ window.addEventListener("load", function() {
       );
     });
   });
+  
