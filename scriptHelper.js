@@ -23,53 +23,50 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
   
   function formSubmission(event, document, list, pilot, copilot, fuelLevel, cargoLevel) {
     event.preventDefault();
-  
     let pilotStatus = validateInput(pilot);
-    let coPilotStatus = validateInput(copilot);
-    let fuelStatus = validateInput(fuelLevel);
-    let cargoStatus = validateInput(cargoLevel);
-  
-    if (pilotStatus === "Empty" || coPilotStatus === "Empty" || fuelStatus === "Empty" || cargoStatus === "Empty") {
-      alert("All fields are required!");
-    } else if (pilotStatus === "Not a Number" || coPilotStatus === "Not a Number" || fuelStatus !== "Is a Number" || cargoStatus !== "Is a Number") {
-      alert("Make sure to enter valid information for each field!");
+  let coPilotStatus = validateInput(copilot);
+  let fuelStatus = validateInput(fuelLevel);
+  let cargoStatus = validateInput(cargoLevel);
+
+  if (pilotStatus === "Empty" || coPilotStatus === "Empty" || fuelStatus === "Empty" || cargoStatus === "Empty") {
+    alert("All fields are required!");
+  } else if (pilotStatus === "Not a Number" || coPilotStatus === "Not a Number" || fuelStatus !== "Is a Number" || cargoStatus !== "Is a Number") {
+    alert("Make sure to enter valid information for each field!");
+  } else {
+    document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
+    document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
+
+    if (fuelLevel < 10000) {
+      document.getElementById("faultyItems").style.visibility = "visible";
+      document.getElementById("fuelStatus").innerHTML = "There is not enough fuel for the journey";
+      document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
+      document.getElementById("launchStatus").style.color = "red";
+    } else if (cargoLevel > 10000) {
+      document.getElementById("faultyItems").style.visibility = "visible";
+      document.getElementById("cargoStatus").innerHTML = "There is too much mass for the shuttle to take off";
+      document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
+      document.getElementById("launchStatus").style.color = "red";
     } else {
-      document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
-      document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
-  
-      if (fuelLevel < 10000) {
-        document.getElementById("faultyItems").style.visibility = "visible";
-        document.getElementById("fuelStatus").innerHTML = "There is not enough fuel for the journey";
-        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
-        document.getElementById("launchStatus").style.color = "red";
-      } else if (cargoLevel > 10000) {
-        document.getElementById("faultyItems").style.visibility = "visible";
-        document.getElementById("cargoStatus").innerHTML = "There is too much mass for the shuttle to take off";
-        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
-        document.getElementById("launchStatus").style.color = "red";
-      } else {
-        document.getElementById("faultyItems").style.visibility = "hidden";
-        document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch";
-        document.getElementById("launchStatus").style.color = "green";
-      }
+      document.getElementById("faultyItems").style.visibility = "hidden";
+      document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch";
+      document.getElementById("launchStatus").style.color = "green";
     }
   }
-  
-  async function myFetch() {
-    let response = await fetch('https://handlers.education.launchcode.org/static/planets.json');
-    return response.json();
-  }
-  
-  function pickPlanet(planets) {
-    return planets[Math.floor(Math.random() * planets.length)];
-  }
-  
-  module.exports = {
-    addDestinationInfo,
-    validateInput,
-    formSubmission,
-    myFetch,
-    pickPlanet
-  };
-  
-  
+}
+
+async function myFetch() {
+  let response = await fetch('https://handlers.education.launchcode.org/static/planets.json');
+  return response.json();
+}
+
+function pickPlanet(planets) {
+  return planets[Math.floor(Math.random() * planets.length)];
+}
+
+module.exports = {
+  addDestinationInfo,
+  validateInput,
+  formSubmission,
+  myFetch,
+  pickPlanet
+};
