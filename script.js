@@ -1,4 +1,5 @@
 // Write your JavaScript code here!
+<script src="script.js"></script>
 
 window.addEventListener("load", function() {
 
