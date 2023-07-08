@@ -53,7 +53,7 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
     }
   }
 }
-
+const fetch = require('node-fetch');
 async function myFetch() {
   let response = await fetch('https://handlers.education.launchcode.org/static/planets.json');
   return response.json();
