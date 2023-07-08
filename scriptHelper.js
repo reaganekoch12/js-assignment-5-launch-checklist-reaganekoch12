@@ -21,8 +21,8 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
     }
   }
   
-  function formSubmission(event, document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    event.preventDefault();
+  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    //event.preventDefault();
     let pilotStatus = validateInput(pilot);
   let coPilotStatus = validateInput(copilot);
   let fuelStatus = validateInput(fuelLevel);
