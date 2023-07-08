@@ -29,12 +29,13 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
   let cargoStatus = validateInput(cargoLevel);
 
   if (pilotStatus === "Empty" || coPilotStatus === "Empty" || fuelStatus === "Empty" || cargoStatus === "Empty") {
-    return("All fields are required!");
+    alert("All fields are required!");
   } else if (pilotStatus === "Not a Number" || coPilotStatus === "Not a Number" || fuelStatus !== "Is a Number" || cargoStatus !== "Is a Number") {
-    return ("try again");
+    alert ("try again");
   } else {
-    document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName} is ready for launch`;
-    document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotName} is ready for launch`;
+    document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
+    document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
+    
 
     if (fuelLevel < 10000) {
       document.getElementById("faultyItems").style.visibility = "visible";
@@ -53,11 +54,11 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
     }
   }
 }
-const fetch = require('node-fetch');
-async function myFetch() {
-  let response = await fetch('https://handlers.education.launchcode.org/static/planets.json');
-  return response.json();
-}
+const myFetch = (async () => {
+    let response = await fetch('https://handlers.education.launchcode.org/static/planets.json');
+    return response.json();
+  })();
+  
 
 function pickPlanet(planets) {
   return planets[Math.floor(Math.random() * planets.length)];
