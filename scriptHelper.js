@@ -33,8 +33,8 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
   } else if (pilotStatus === "Not a Number" || coPilotStatus === "Not a Number" || fuelStatus !== "Is a Number" || cargoStatus !== "Is a Number") {
     return ("try again");
   } else {
-    document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
-    document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
+    document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName} is ready for launch`;
+    document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotName} is ready for launch`;
 
     if (fuelLevel < 10000) {
       document.getElementById("faultyItems").style.visibility = "visible";
