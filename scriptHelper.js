@@ -29,9 +29,9 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
   let cargoStatus = validateInput(cargoLevel);
 
   if (pilotStatus === "Empty" || coPilotStatus === "Empty" || fuelStatus === "Empty" || cargoStatus === "Empty") {
-    alert("All fields are required!");
+    return("All fields are required!");
   } else if (pilotStatus === "Not a Number" || coPilotStatus === "Not a Number" || fuelStatus !== "Is a Number" || cargoStatus !== "Is a Number") {
-    alert("Make sure to enter valid information for each field!");
+    return ("try again");
   } else {
     document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
     document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
