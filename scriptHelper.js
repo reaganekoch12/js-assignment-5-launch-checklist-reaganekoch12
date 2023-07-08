@@ -56,7 +56,7 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
 }
 async function myFetch(){
     const response = await fetch ('https://handlers.education.launchcode.org/static/planets.json');
-    const print = await response. json();
+    //const print = await response.json();
    // console.log(print);
 }
   
