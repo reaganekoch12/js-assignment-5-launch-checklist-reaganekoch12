@@ -28,14 +28,28 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
     let fuelStatus = validateInput(fuelLevel);
     let cargoStatus = validateInput(cargoLevel);
   
-    if (pilotStatus === "Empty" || coPilotStatus === "Empty" || fuelStatus === "Empty" || cargoStatus === "Empty") {
+    if (
+      pilotStatus === "Empty" ||
+      coPilotStatus === "Empty" ||
+      fuelStatus === "Empty" ||
+      cargoStatus === "Empty"
+    ) {
       alert("All fields are required!");
-    } else if (pilotStatus === "Not a Number" || coPilotStatus === "Not a Number" || fuelStatus !== "Is a Number" || cargoStatus !== "Is a Number") {
+    } else if (
+      pilotStatus === "Not a Number" ||
+      pilotStatus === "Is a Number" ||
+      coPilotStatus === "Not a Number" ||
+      coPilotStatus === "Is a Number" ||
+      fuelStatus !== "Is a Number" ||
+      cargoStatus !== "Is a Number"
+    ) {
       alert("Try again");
     } else {
       document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
       document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
-  
+    }
+    
+    
       if (fuelLevel < 10000) {
         document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("fuelStatus").innerHTML = "There is not enough fuel for the journey";
@@ -52,7 +66,7 @@ async function addDestinationInfo(document, name, diameter, star, distance, moon
         document.getElementById("launchStatus").style.color = "green";
       }
     }
-  }
+  
   
   async function myFetch() {
     let response = await fetch('https://handlers.education.launchcode.org/static/planets.json');
@@ -71,3 +85,4 @@ module.exports = {
   myFetch,
   pickPlanet
 };
+//MAKE SURE TAHT THE PILOT AND COPILOT BOOLEANS ARE DOING THE SAME AS CARGOlEVEL AND FUELLEVEL

@@ -33,4 +33,5 @@ form.addEventListener("submit", function(event) {
   );
 });
 });
+  //CHANGE IMAGE NAME TO THE SAME JSON 
   
